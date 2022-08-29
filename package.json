@@ -11,9 +11,11 @@
   },
   "devDependencies": {
     "@astrojs/tailwind": "^1.0.0",
-    "astro": "^1.1.1"
+    "astro": "^1.1.1",
+    "sass": "^1.54.5"
   },
   "dependencies": {
-    "@fontsource/source-sans-3": "^4.5.11"
+    "@fontsource/source-sans-3": "^4.5.11",
+    "simple-icons": "^7.9.0"
   }
 }

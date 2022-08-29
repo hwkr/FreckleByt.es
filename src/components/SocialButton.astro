@@ -1,11 +1,97 @@
 ---
+import type { SimpleIcon } from "simple-icons";
+
 export interface Props {
   href: string;
+  icon: SimpleIcon;
+  label: string;
 }
 
-const { href } = Astro.props;
+const { href, icon, label } = Astro.props;
 ---
 
-<a class="px-1 py-0.5" href={href}>
-  <slot />
+<a
+  data-tooltip={label}
+  target="_blank"
+  class="tooltip p-2 text-pink-500 rounded hover:bg-gray-900/10"
+  href={href}
+>
+  <div class="w-6 h-6 fill-current" set:html={icon.svg}></div>
+  <span class="sr-only">{label}</span>
 </a>
+
+<style lang="scss">
+  // Tooltips
+  .tooltip {
+    position: relative;
+    &::after {
+      @apply bg-gray-900/90 rounded text-white text-sm z-10;
+      bottom: 100%;
+      content: attr(data-tooltip);
+      display: block;
+      left: 50%;
+      max-width: 32rem;
+      opacity: 0;
+      overflow: hidden;
+      padding: 0.4rem 0.8rem;
+      pointer-events: none;
+      position: absolute;
+      text-overflow: ellipsis;
+      transform: translate(-50%, 1rem);
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    &:focus,
+    &:hover {
+      &::after {
+        opacity: 1;
+        transform: translate(-50%, -0.5rem);
+      }
+    }
+    &[disabled],
+    &.disabled {
+      pointer-events: auto;
+    }
+
+    &.tooltip-right {
+      &::after {
+        bottom: 50%;
+        left: 100%;
+        transform: translate(-1rem, 50%);
+      }
+      &:focus,
+      &:hover {
+        &::after {
+          transform: translate(0.5rem, 50%);
+        }
+      }
+    }
+    &.tooltip-bottom {
+      &::after {
+        bottom: auto;
+        top: 100%;
+        transform: translate(-50%, -1rem);
+      }
+      &:focus,
+      &:hover {
+        &::after {
+          transform: translate(-50%, 0.5rem);
+        }
+      }
+    }
+    &.tooltip-left {
+      &::after {
+        bottom: 50%;
+        left: auto;
+        right: 100%;
+        transform: translate(1rem, 50%);
+      }
+      &:focus,
+      &:hover {
+        &::after {
+          transform: translate(-0.5rem, 50%);
+        }
+      }
+    }
+  }
+</style>
