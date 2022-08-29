@@ -1,13 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Logo from "../assets/logo.svg.astro";
 ---
 
 <Layout title="FreckleBytes">
-  <main class="text-pink-500">
-    <h1>Welcome from <span class="text-gradient">Astro</span></h1>
-    <p>
-      Check out the directory to get started.<br />
-      <em>Code Challenge:</em> Tweak the "Welcome to Astro" message above.
-    </p>
+  <main class="h-screen w-screen px-16 py-16 flex items-center">
+    <Logo class="w-48 sm:w-96" />
   </main>
 </Layout>
