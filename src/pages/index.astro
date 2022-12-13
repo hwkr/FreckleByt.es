@@ -2,31 +2,11 @@
 import Layout from "../layouts/Layout.astro";
 import Logo from "../assets/logo.svg.astro";
 
-import { siTwitch, siInstagram, siTwitter } from "simple-icons/icons";
-import SocialButton from "../components/SocialButton.astro";
+import Image from "../assets/IMG_2421.png";
 ---
 
 <Layout title="FreckleBytes">
-  <main
-    class="h-screen w-screen px-16 py-16 flex flex-col items-start justify-center gap-4"
-  >
-    <Logo class="w-48 sm:w-96" />
-    <div class="flex gap-2">
-      <SocialButton
-        icon={siTwitter}
-        href="https://twitter.com/frecklebytes"
-        label="Tweet at me"
-      />
-      <SocialButton
-        icon={siInstagram}
-        href="https://instagram.com/frecklebytes"
-        label="Cosplay with me"
-      />
-      <SocialButton
-        icon={siTwitch}
-        href="https://twitch.tv/frecklebytes"
-        label="Watch me code"
-      />
-    </div>
+  <main class="h-screen w-screen flex justify-center gap-4">
+    <img src={Image} class="h-1/2" />
   </main>
 </Layout>
